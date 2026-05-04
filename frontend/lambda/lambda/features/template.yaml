@@ -1,0 +1,71 @@
+Resources:
+
+  ApiGateway:
+    Type: AWS::Serverless::Api
+
+  HealthLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: health.lambda_handler
+      Runtime: python3.9
+
+  StaticBucket:
+    Type: AWS::S3::Bucket
+
+  StaticProxyLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: proxy.lambda_handler
+      Runtime: python3.9
+
+  UploadBucket:
+    Type: AWS::S3::Bucket
+
+  SubmitLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: lambda/submit.lambda_handler
+      Runtime: python3.9
+
+  JobsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+
+  RecordsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+
+  StateMachine:
+    Type: AWS::StepFunctions::StateMachine
+
+  FetchLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: fetch.lambda_handler
+      Runtime: python3.9
+
+  CallLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: call.lambda_handler
+      Runtime: python3.9
+
+  SaveLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: save.lambda_handler
+      Runtime: python3.9
+
+  PollLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: poll.lambda_handler
+      Runtime: python3.9
+
+  RecordsLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: lambda/records.lambda_handler
+      Runtime: python3.9

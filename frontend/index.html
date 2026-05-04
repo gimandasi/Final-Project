@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Smart Shopping List</title>
+</head>
+<body>
+
+<h1>Smart Shopping List Uploader</h1>
+
+<input type="file" id="fileInput">
+<button onclick="uploadFile()">Upload List</button>
+
+<h2>Detected Items</h2>
+<ul id="itemsList"></ul>
+
+<script>
+async function uploadFile() {
+  const file = document.getElementById("fileInput").files[0];
+  if (!file) {
+    alert("Please select a file first.");
+    return;
+  }
+
+  alert("Image sent for processing (simulated)");
+  loadItems();
+}
+
+async function loadItems() {
+  const items = ["Apples", "Chicken", "Rice"];
+  const list = document.getElementById("itemsList");
+  list.innerHTML = "";
+
+  items.forEach((item, index) => {
+    let li = document.createElement("li");
+    li.innerText = item;
+
+    let btn = document.createElement("button");
+    btn.innerText = "Delete";
+    btn.onclick = () => deleteItem(index);
+
+    li.appendChild(btn);
+    list.appendChild(li);
+  });
+}
+
+function deleteItem(index) {
+  alert("Item deleted (simulated)");
+  loadItems();
+}
+
+loadItems();
+</script>
+
+</body>
+</html>
